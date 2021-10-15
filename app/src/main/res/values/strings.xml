@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">presensi_panda</string>
+
+    <string name="login">Login</string>
+    <string name="login_message">Masukan akun anda</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="version">Presensi V.1.1</string>
 </resources>
