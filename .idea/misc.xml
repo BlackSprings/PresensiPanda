@@ -5,6 +5,7 @@
       <map>
         <entry key="../../../../../../layout/custom_preview.xml" value="0.16302083333333334" />
         <entry key="app/src/main/res/drawable/circle.xml" value="0.113671875" />
+        <entry key="app/src/main/res/drawable/corner_log.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_home_active.xml" value="0.10572916666666667" />
         <entry key="app/src/main/res/drawable/ic_home_unactive.xml" value="0.10572916666666667" />
         <entry key="app/src/main/res/drawable/ic_illustration_selesai.xml" value="0.10572916666666667" />

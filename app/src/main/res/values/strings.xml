@@ -20,4 +20,5 @@
     <string name="presensi_pulang">Presensi Pulang</string>
     <string name="dummy_check_in">00:00</string>
     <string name="dummy_check_out">12:00</string>
+    <string name="log_presensi">Log Presensi</string>
 </resources>
