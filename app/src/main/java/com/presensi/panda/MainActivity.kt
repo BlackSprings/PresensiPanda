@@ -1,7 +1,9 @@
 package com.presensi.panda
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.presensi.panda.databinding.ActivityMainBinding
 
@@ -19,6 +21,21 @@ class MainActivity : AppCompatActivity() {
         binding.rvAttendances.setHasFixedSize(true)
         listAttendance.addAll(listAttendances)
         showRecyclerList()
+
+        binding.bottomNavigationView.setOnNavigationItemSelectedListener {
+            item: MenuItem -> selectedMenu(item)
+            false
+        }
+    }
+
+    private fun selectedMenu(item: MenuItem){
+        item.isChecked = true
+        when(item.itemId){
+            R.id.profile_nav -> {
+                val moveProfile = Intent(this@MainActivity, ProfileActivity::class.java)
+                startActivity(moveProfile)
+            }
+        }
     }
 
     private val listAttendances: ArrayList<Attendance>
