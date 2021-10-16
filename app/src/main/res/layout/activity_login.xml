@@ -147,7 +147,7 @@
             android:padding="15dp"
             android:text="@string/login"
             android:textColor="@color/white"
-            app:backgroundTint="@color/primary"
+            app:backgroundTint="@color/btn_login_checkin"
             app:cornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
