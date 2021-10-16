@@ -6,4 +6,9 @@
     <string name="username">Username</string>
     <string name="password">Password</string>
     <string name="version">Presensi V.1.1</string>
+    <string name="email">email</string>
+    <string name="sign_out">Sign Out</string>
+    <string name="name">name</string>
+    <string name="about_apps">Tentang Aplikasi</string>
+    <string name="bantuan">Bantuan</string>
 </resources>
