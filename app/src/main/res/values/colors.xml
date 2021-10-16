@@ -11,4 +11,5 @@
     <color name="text_grey">#A5A5A5</color>
     <color name="text_grey_dark">#5F6567</color>
     <color name="btn_logout">#E42426</color>
+    <color name="btn_login_checkin">#279BD5</color>
 </resources>
