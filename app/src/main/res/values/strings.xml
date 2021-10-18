@@ -21,4 +21,10 @@
     <string name="dummy_check_in">00:00</string>
     <string name="dummy_check_out">12:00</string>
     <string name="log_presensi">Log Presensi</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="result_message_1">Selamat Anda</string>
+    <string name="result_message_3">Kehadiran</string>
+    <string name="result_message_2">Sudah Presensi</string>
+    <string name="back">Kembali</string>
 </resources>
