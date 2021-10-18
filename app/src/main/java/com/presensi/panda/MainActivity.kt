@@ -22,6 +22,7 @@ class MainActivity : AppCompatActivity() {
         listAttendance.addAll(listAttendances)
         showRecyclerList()
 
+        binding.bottomNavigationView.selectedItemId = R.id.home_nav
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
             item: MenuItem -> selectedMenu(item)
             false

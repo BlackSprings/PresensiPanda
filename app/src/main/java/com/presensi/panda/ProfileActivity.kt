@@ -4,7 +4,6 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import com.presensi.panda.databinding.ActivityMainBinding
 import com.presensi.panda.databinding.ActivityProfileBinding
 
 class ProfileActivity : AppCompatActivity() {
@@ -16,6 +15,17 @@ class ProfileActivity : AppCompatActivity() {
         binding = ActivityProfileBinding.inflate(layoutInflater)
         setContentView(binding.root)
         supportActionBar?.hide()
+
+        val mFragmentManager = supportFragmentManager
+        val mProfileFragment = ProfileFragment()
+        val fragment = mFragmentManager.findFragmentByTag(ProfileFragment::class.java.simpleName)
+
+        if (fragment !is ProfileFragment) {
+            mFragmentManager
+                .beginTransaction()
+                .add(R.id.frameLayout, mProfileFragment, ProfileFragment::class.java.simpleName)
+                .commit()
+        }
 
         binding.bottomNavigationView.selectedItemId = R.id.profile_nav
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
@@ -32,5 +42,10 @@ class ProfileActivity : AppCompatActivity() {
                 startActivity(moveProfile)
             }
         }
+    }
+
+    fun setBottomNavigationVisibility(visibility: Int) {
+        // get the reference of the bottomNavigationView and set the visibility.
+        binding.bottomNavigationView.visibility = visibility
     }
 }
