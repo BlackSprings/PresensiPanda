@@ -15,6 +15,7 @@
         android:layout_marginEnd="32dp"
         android:text="@string/dummy_about_app"
         android:textSize="16sp"
+        android:textColor="@color/text_grey_dark"
         android:justificationMode="inter_word"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"

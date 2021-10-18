@@ -60,6 +60,7 @@
         app:layout_constraintTop_toBottomOf="@+id/result_message_2" />
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="32dp"
@@ -67,8 +68,9 @@
         android:padding="20dp"
         android:text="@string/back"
         android:textColor="@color/primary"
-        android:textSize="22sp"
+        android:textSize="14sp"
         app:cornerRadius="25dp"
+        android:backgroundTint="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.487"
