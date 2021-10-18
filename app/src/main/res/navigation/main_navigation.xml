@@ -29,4 +29,22 @@
         android:name="com.presensi.panda.ProfileActivity"
         android:label="activity_profile"
         tools:layout="@layout/activity_profile" />
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="com.presensi.panda.AboutAppFragment"
+        android:label="fragment_about_app"
+        tools:layout="@layout/fragment_about_app" >
+        <action
+            android:id="@+id/action_aboutAppFragment_to_profileActivity"
+            app:destination="@id/profileActivity" />
+    </fragment>
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.presensi.panda.HelpFragment"
+        android:label="fragment_help"
+        tools:layout="@layout/fragment_help" >
+        <action
+            android:id="@+id/action_helpFragment_to_profileActivity"
+            app:destination="@id/profileActivity" />
+    </fragment>
 </navigation>
