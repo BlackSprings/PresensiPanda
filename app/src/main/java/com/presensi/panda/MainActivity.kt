@@ -18,9 +18,16 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         supportActionBar?.hide()
 
-        binding.rvAttendances.setHasFixedSize(true)
-        listAttendance.addAll(listAttendances)
-        showRecyclerList()
+        val mFragmentManager = supportFragmentManager
+        val mHomeFragment = HomeFragment()
+        val fragment = mFragmentManager.findFragmentByTag(HomeFragment::class.java.simpleName)
+
+        if (fragment !is HomeFragment) {
+            mFragmentManager
+                .beginTransaction()
+                .add(R.id.frameLayout, mHomeFragment, HomeFragment::class.java.simpleName)
+                .commit()
+        }
 
         binding.bottomNavigationView.selectedItemId = R.id.home_nav
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
@@ -39,19 +46,8 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private val listAttendances: ArrayList<Attendance>
-        get() {
-            val listData = ArrayList<Attendance>()
-            for(i in 1..10){
-                var attendance = Attendance("Sabtu","13 Oktober 2021","08:00","12:00")
-                listData.add(attendance)
-            }
-            return listData
-        }
-
-    private fun showRecyclerList() {
-        binding.rvAttendances.layoutManager = LinearLayoutManager(this)
-        val listAttendanceAdapter = ListAttendanceAdapter(listAttendance)
-        binding.rvAttendances.adapter = listAttendanceAdapter
+    fun setBottomNavigationVisibility(visibility: Int) {
+        // get the reference of the bottomNavigationView and set the visibility.
+        binding.bottomNavigationView.visibility = visibility
     }
 }
