@@ -27,4 +27,9 @@
     <string name="result_message_3">Kehadiran</string>
     <string name="result_message_2">Sudah Presensi</string>
     <string name="back">Kembali</string>
+    <string name="dummy_about_app">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.</string>
+    <string name="help_message">Kunjungi Sosial Media kami di:</string>
+    <string name="web_help_1">www.panda.id</string>
+    <string name="instagram">Teknologi Panda</string>
+    <string name="facebook">Puskomedia.ID</string>
 </resources>
