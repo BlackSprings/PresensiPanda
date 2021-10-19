@@ -32,8 +32,10 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         super.onViewCreated(view, savedInstanceState)
         val imgAbout:ImageView = view.findViewById(R.id.imgToAbout)
         val imgHelp:ImageView = view.findViewById(R.id.imgToHelp)
+        val imgChangePassword:ImageView = view.findViewById(R.id.imgToChangePwd)
         imgAbout.setOnClickListener(this)
         imgHelp.setOnClickListener(this)
+        imgChangePassword.setOnClickListener(this)
         var actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.hide()
         if(activity is ProfileActivity){
@@ -62,6 +64,16 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             val mFragmentManager = parentFragmentManager
             mFragmentManager.beginTransaction().apply {
                 replace(R.id.frameLayout, mHelpFragment, HelpFragment::class.java.simpleName)
+                addToBackStack(null)
+                commit()
+            }
+        }
+
+        if(v.id == R.id.imgToChangePwd){
+            val mChangePasswordFragment = ChangePasswordFragment()
+            val mFragmentManager = parentFragmentManager
+            mFragmentManager.beginTransaction().apply {
+                replace(R.id.frameLayout, mChangePasswordFragment, ChangePasswordFragment::class.java.simpleName)
                 addToBackStack(null)
                 commit()
             }

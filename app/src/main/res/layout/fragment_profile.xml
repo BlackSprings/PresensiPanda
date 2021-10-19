@@ -65,6 +65,16 @@
         app:layout_constraintTop_toBottomOf="@+id/txt_email"
         app:layout_constraintVertical_bias="0.0">
 
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/lock"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider_email" />
+
         <TextView
             android:id="@+id/txt_name_detail"
             android:layout_width="0dp"
@@ -135,8 +145,22 @@
             android:text="@string/about_apps"
             android:textColor="@color/text_grey_dark"
             app:layout_constraintEnd_toStartOf="@+id/imgToAbout"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toEndOf="@+id/imageView2"
-            app:layout_constraintTop_toTopOf="@+id/divider_email" />
+            app:layout_constraintTop_toBottomOf="@+id/divider_email2" />
+
+        <TextView
+            android:id="@+id/txt_change_pwd"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:text="@string/change_password"
+            android:textColor="@color/text_grey_dark"
+            app:layout_constraintEnd_toStartOf="@+id/imgToChangePwd"
+            app:layout_constraintStart_toEndOf="@+id/imageView2"
+            app:layout_constraintTop_toBottomOf="@+id/divider_email" />
 
         <ImageView
             android:id="@+id/imageView4"
@@ -146,7 +170,7 @@
             android:layout_marginTop="16dp"
             android:src="@drawable/ic_profile_tentangapp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider_email" />
+            app:layout_constraintTop_toBottomOf="@+id/divider_email2" />
 
         <View
             android:id="@+id/divider_email"
@@ -160,6 +184,19 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/txt_email_detail" />
+
+        <View
+            android:id="@+id/divider_email2"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:background="@color/text_grey_dark"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/txt_change_pwd" />
 
         <TextView
             android:id="@+id/txt_contact"
@@ -202,21 +239,31 @@
             android:id="@+id/imgToAbout"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
+            android:src="@drawable/ic_profile_details"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider_email"
-            android:src="@drawable/ic_profile_details" />
+            app:layout_constraintTop_toBottomOf="@+id/divider_email2" />
+
+        <ImageView
+            android:id="@+id/imgToChangePwd"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="32dp"
+            android:src="@drawable/ic_profile_details"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider_email" />
 
         <ImageView
             android:id="@+id/imgToHelp"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="32dp"
+            android:src="@drawable/ic_profile_details"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider_about"
-            android:src="@drawable/ic_profile_details" />
+            app:layout_constraintTop_toBottomOf="@+id/divider_about" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.button.MaterialButton
