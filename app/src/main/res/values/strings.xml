@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">presensi_panda</string>
+    <string name="app_name">Presensi</string>
 
     <string name="login">Login</string>
     <string name="login_message">Masukan akun anda</string>
