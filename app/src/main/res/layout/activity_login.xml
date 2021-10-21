@@ -66,15 +66,18 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField"
+            android:id="@+id/outline_username"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
             app:boxCornerRadiusTopStart="15dp"
             app:boxStrokeColor="@color/text_grey_dark"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/textView4">
@@ -83,9 +86,9 @@
                 android:id="@+id/txt_username"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="0dp"
                 android:maxLines="1"
                 android:shadowColor="@color/text_grey_dark"
                 android:textColor="@color/text_grey_dark" />
@@ -105,31 +108,34 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/outlinedTextField" />
+            app:layout_constraintTop_toBottomOf="@id/outline_username" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/outlinedTextField2"
+            android:id="@+id/outline_password"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
             app:boxCornerRadiusBottomEnd="15dp"
             app:boxCornerRadiusBottomStart="15dp"
             app:boxCornerRadiusTopEnd="15dp"
-            app:passwordToggleEnabled="true"
-            app:passwordToggleTint="@color/text_grey_dark"
             app:boxCornerRadiusTopStart="15dp"
             app:boxStrokeColor="@color/text_grey_dark"
+            app:errorEnabled="true"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView5">
+            app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:passwordToggleEnabled="true"
+            app:passwordToggleTint="@color/text_grey_dark">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/txt_password"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="32dp"
+                android:layout_marginStart="0dp"
                 android:layout_marginTop="8dp"
-                android:layout_marginEnd="32dp"
+                android:layout_marginEnd="0dp"
                 android:inputType="textPassword"
                 android:maxLines="1"
                 android:shadowColor="@color/text_grey_dark"
@@ -151,7 +157,7 @@
             app:cornerRadius="20dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/outlinedTextField2" />
+            app:layout_constraintTop_toBottomOf="@+id/outline_password" />
 
         <TextView
             android:id="@+id/textView6"
