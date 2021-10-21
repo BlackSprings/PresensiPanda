@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.widget.doOnTextChanged
 import com.presensi.panda.databinding.ActivityLoginBinding
-import com.presensi.panda.databinding.ActivityMainBinding
 
 class LoginActivity : AppCompatActivity() {
 
