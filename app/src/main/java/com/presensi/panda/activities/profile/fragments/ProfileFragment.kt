@@ -1,8 +1,6 @@
-package com.presensi.panda
+package com.presensi.panda.activities.profile.fragments
 
 import android.content.Intent
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,8 +8,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
+import com.presensi.panda.R
+import com.presensi.panda.activities.login.LoginActivity
+import com.presensi.panda.activities.profile.ProfileActivity
 import com.presensi.panda.databinding.FragmentProfileBinding
-import com.presensi.panda.databinding.FragmentScannerBinding
 
 class ProfileFragment : Fragment(), View.OnClickListener {
 

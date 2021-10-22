@@ -1,8 +1,9 @@
-package com.presensi.panda
+package com.presensi.panda.activities.main.adapters
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.presensi.panda.models.Attendance
 import com.presensi.panda.databinding.ItemRowAttendanceBinding
 
 class ListAttendanceAdapter(private val listAttendance: ArrayList<Attendance>) : RecyclerView.Adapter<ListAttendanceAdapter.ListViewHolder>() {

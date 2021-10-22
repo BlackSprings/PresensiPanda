@@ -1,12 +1,12 @@
-package com.presensi.panda
+package com.presensi.panda.activities.main.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.presensi.panda.R
 import com.presensi.panda.databinding.FragmentResultBinding
-import com.presensi.panda.databinding.FragmentScannerBinding
 
 
 class ResultFragment : Fragment() {

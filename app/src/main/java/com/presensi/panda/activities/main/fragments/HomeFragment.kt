@@ -1,4 +1,4 @@
-package com.presensi.panda
+package com.presensi.panda.activities.main.fragments
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,7 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.presensi.panda.databinding.ActivityMainBinding
+import com.presensi.panda.models.Attendance
+import com.presensi.panda.R
+import com.presensi.panda.activities.main.MainActivity
+import com.presensi.panda.activities.main.adapters.ListAttendanceAdapter
 import com.presensi.panda.databinding.FragmentHomeBinding
 
 class HomeFragment : Fragment() {

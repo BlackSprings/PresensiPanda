@@ -1,9 +1,10 @@
-package com.presensi.panda
+package com.presensi.panda.activities.login
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.core.widget.doOnTextChanged
+import com.presensi.panda.activities.main.MainActivity
 import com.presensi.panda.databinding.ActivityLoginBinding
 
 class LoginActivity : AppCompatActivity() {

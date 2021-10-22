@@ -1,10 +1,11 @@
-package com.presensi.panda
+package com.presensi.panda.ui
 
 import android.content.Context
 import android.os.Build
 import android.util.AttributeSet
 import android.view.ViewOutlineProvider
 import androidx.appcompat.widget.AppCompatImageView
+import com.presensi.panda.R
 
 class CircleImageView : AppCompatImageView {
     constructor(context: Context) : super(context) {

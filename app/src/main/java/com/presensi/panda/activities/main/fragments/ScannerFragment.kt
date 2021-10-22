@@ -1,4 +1,4 @@
-package com.presensi.panda
+package com.presensi.panda.activities.main.fragments
 
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -15,6 +15,8 @@ import com.budiyev.android.codescanner.CodeScanner
 import com.budiyev.android.codescanner.DecodeCallback
 import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
+import com.presensi.panda.R
+import com.presensi.panda.activities.main.MainActivity
 import com.presensi.panda.databinding.FragmentScannerBinding
 
 class ScannerFragment : Fragment() {

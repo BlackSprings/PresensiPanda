@@ -1,10 +1,13 @@
-package com.presensi.panda
+package com.presensi.panda.activities.main
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import androidx.recyclerview.widget.LinearLayoutManager
+import com.presensi.panda.models.Attendance
+import com.presensi.panda.activities.main.fragments.HomeFragment
+import com.presensi.panda.activities.profile.ProfileActivity
+import com.presensi.panda.R
 import com.presensi.panda.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {

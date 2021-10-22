@@ -1,4 +1,4 @@
-package com.presensi.panda
+package com.presensi.panda.models
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

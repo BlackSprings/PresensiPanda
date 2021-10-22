@@ -14,7 +14,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Presensi_panda">
         <activity
-            android:name=".SplashActivity"
+            android:name="com.presensi.panda.activities.splashscreen.SplashActivity"
             android:theme="@style/Theme.Design.Light.NoActionBar"
             android:exported="true" >
             <intent-filter>
@@ -23,13 +23,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name="com.presensi.panda.activities.main.MainActivity"
             android:exported="true" />
         <activity
-            android:name=".ProfileActivity"
+            android:name="com.presensi.panda.activities.profile.ProfileActivity"
             android:exported="true" />
         <activity
-            android:name=".LoginActivity"
+            android:name="com.presensi.panda.activities.login.LoginActivity"
             android:exported="true">
         </activity>
     </application>

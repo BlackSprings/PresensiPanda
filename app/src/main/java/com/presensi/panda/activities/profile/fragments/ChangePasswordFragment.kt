@@ -1,7 +1,5 @@
-package com.presensi.panda
+package com.presensi.panda.activities.profile.fragments
 
-import android.graphics.Color
-import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -10,8 +8,8 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
+import com.presensi.panda.activities.profile.ProfileActivity
 import com.presensi.panda.databinding.FragmentChangePasswordBinding
-import com.presensi.panda.databinding.FragmentHomeBinding
 
 class ChangePasswordFragment : Fragment() {
 
