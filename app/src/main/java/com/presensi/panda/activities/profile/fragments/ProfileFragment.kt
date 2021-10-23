@@ -12,6 +12,7 @@ import com.presensi.panda.R
 import com.presensi.panda.activities.login.LoginActivity
 import com.presensi.panda.activities.profile.ProfileActivity
 import com.presensi.panda.databinding.FragmentProfileBinding
+import com.presensi.panda.utils.SharedPrefManager
 
 class ProfileFragment : Fragment(), View.OnClickListener {
 
@@ -43,6 +44,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         }
 
         binding.btnLogout.setOnClickListener {
+            SharedPrefManager.getInstance(requireContext()).clear()
             val moveLogin = Intent(activity, LoginActivity::class.java)
             startActivity(moveLogin)
         }

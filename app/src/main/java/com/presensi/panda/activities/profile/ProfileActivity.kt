@@ -6,8 +6,10 @@ import android.os.Bundle
 import android.view.MenuItem
 import com.presensi.panda.activities.profile.fragments.ProfileFragment
 import com.presensi.panda.R
+import com.presensi.panda.activities.login.LoginActivity
 import com.presensi.panda.activities.main.MainActivity
 import com.presensi.panda.databinding.ActivityProfileBinding
+import com.presensi.panda.utils.SharedPrefManager
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -34,6 +36,15 @@ class ProfileActivity : AppCompatActivity() {
         binding.bottomNavigationView.setOnNavigationItemSelectedListener {
                 item: MenuItem -> selectedMenu(item)
             false
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        if(!SharedPrefManager.getInstance(this).isLoggedIn){
+            val intent = Intent(applicationContext, LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(intent)
         }
     }
 
