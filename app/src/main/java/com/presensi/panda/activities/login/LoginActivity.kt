@@ -3,28 +3,21 @@ package com.presensi.panda.activities.login
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import android.util.Log
 import android.widget.Toast
 import androidx.core.widget.doOnTextChanged
-import androidx.fragment.app.FragmentManager
-import androidx.lifecycle.lifecycleScope
-import com.presensi.panda.activities.main.MainActivity
 import com.presensi.panda.databinding.ActivityLoginBinding
-import com.presensi.panda.models.User
+import com.presensi.panda.network.UserRequest
 import com.presensi.panda.network.ApiConfig
 import com.presensi.panda.ui.DialogFragment
-import kotlinx.coroutines.coroutineScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.concurrent.Executors
-import java.util.concurrent.ScheduledExecutorService
-import android.content.DialogInterface
-import androidx.appcompat.app.AlertDialog
+import android.view.Gravity
+import com.pranavpandey.android.dynamic.toasts.DynamicToast
+import com.presensi.panda.activities.main.MainActivity
+import com.presensi.panda.models.User
+import com.presensi.panda.utils.SharedPrefManager
 
 
 class LoginActivity : AppCompatActivity() {
@@ -52,8 +45,8 @@ class LoginActivity : AppCompatActivity() {
             val username = binding.txtUsername.text.toString()
             val password = binding.txtPassword.text.toString()
             if (validateData()) {
-                  Log.d(TAG, "onValidate ${username} ${password}")
-                  postLogin(username, password)
+                Log.d(TAG, "onValidate ${username} ${password}")
+                postLogin(username, password)
             }
         }
     }
@@ -77,38 +70,59 @@ class LoginActivity : AppCompatActivity() {
 
     private fun postLogin(username: String, password: String) {
         showLoading(true)
-        var user = User(username,password)
+        var user = UserRequest(username, password)
         val client = ApiConfig.getApiService().postLogin(user)
-        client.enqueue(object : Callback<ResponseLogin>{
+        client.enqueue(object : Callback<ResponseLogin> {
             override fun onResponse(call: Call<ResponseLogin>, response: Response<ResponseLogin>) {
                 showLoading(false)
                 val responseBody = response.body()
-                if(responseBody != null){
-                    if(responseBody.totalData!! > 0){
-                        Toast.makeText(this@LoginActivity, "hai ${responseBody.data?.name}",Toast.LENGTH_LONG).show()
-                    }else{
-                        val dlgAlert: AlertDialog.Builder = AlertDialog.Builder(this@LoginActivity)
+                if (responseBody != null) {
+                    if (responseBody.totalData!! > 0) {
+                        if(responseBody.data?.roles?.get(0)?.name == "operator:User"){
+                            var user = User(
+                                responseBody.data?.id!!,
+                                responseBody.data.name,
+                                responseBody.data.username,
+                                responseBody.data.email
+                            )
+                            SharedPrefManager.getInstance(applicationContext).saveUser(user)
 
-                        dlgAlert.setMessage("wrong password or username")
-                        dlgAlert.setTitle("Error Message...")
-                        dlgAlert.setPositiveButton("OK", null)
-                        dlgAlert.setCancelable(true)
-                        dlgAlert.create().show()
+                            val intent = Intent(applicationContext, MainActivity::class.java)
+                            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
 
-                        dlgAlert.setPositiveButton("Ok",
-                            DialogInterface.OnClickListener { dialog, which -> })
+                            startActivity(intent)
+                        }else{
+                            showDialog("Role akun anda bukan Operator User.")
+                        }
+                        Log.d(TAG, "DataInfo: ${responseBody.data}")
+                    } else {
+                        showDialog(responseBody.message.toString())
                     }
-                }else{
+                } else {
                     Log.e(TAG, "onFailureLoginPost: ${response.message()}")
                 }
             }
 
             override fun onFailure(call: Call<ResponseLogin>, t: Throwable) {
                 showLoading(false)
-                Log.e(TAG, "onFailureLogin: ${t.message}")
+                if(t.message.toString().contains("IllegalStateException",ignoreCase = false)){
+                    showDialog("Username dan Password tidak dapat Kami Kenali")
+                }
+                Log.e(TAG, "onFailureLogin: ${t.cause.toString()}")
             }
 
         })
+    }
+
+    override fun onStart() {
+        super.onStart()
+
+        if(SharedPrefManager.getInstance(this).isLoggedIn){
+            val intent = Intent(applicationContext, MainActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+
+            startActivity(intent)
+        }
     }
 
     private fun showLoading(isLoading: Boolean) {
@@ -116,8 +130,16 @@ class LoginActivity : AppCompatActivity() {
         if (isLoading) {
             busyDialogFragment.show(supportFragmentManager)
         } else {
-            busyDialogFragment = supportFragmentManager.findFragmentByTag(DialogFragment.FRAGMENT_TAG) as DialogFragment
+            busyDialogFragment =
+                supportFragmentManager.findFragmentByTag(DialogFragment.FRAGMENT_TAG) as DialogFragment
             busyDialogFragment.dismiss()
+        }
+    }
+
+    private fun showDialog(message: String) {
+        DynamicToast.makeError(applicationContext, message, Toast.LENGTH_LONG).apply {
+            setGravity(Gravity.TOP, 0, 0)
+            show()
         }
     }
 

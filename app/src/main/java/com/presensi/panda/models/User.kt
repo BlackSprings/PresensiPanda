@@ -1,8 +1,12 @@
 package com.presensi.panda.models
 
-import com.google.gson.annotations.SerializedName
+import android.os.Parcelable
+import kotlinx.android.parcel.Parcelize
 
+@Parcelize
 data class User(
-    @SerializedName("username") val username: String,
-    @SerializedName("password") var password: String,
-)
+    var id: Int,
+    var name: String?,
+    var username: String?,
+    var email: String?,
+) : Parcelable

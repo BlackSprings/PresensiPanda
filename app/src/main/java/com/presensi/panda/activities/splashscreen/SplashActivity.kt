@@ -7,6 +7,8 @@ import android.os.Handler
 import androidx.lifecycle.lifecycleScope
 import com.presensi.panda.R
 import com.presensi.panda.activities.login.LoginActivity
+import com.presensi.panda.activities.main.MainActivity
+import com.presensi.panda.utils.SharedPrefManager
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -20,6 +22,9 @@ class SplashActivity : AppCompatActivity() {
         lifecycleScope.launch {
             delay(SplashTimeOut)
             finish()
+            if(SharedPrefManager.getInstance(this@SplashActivity).isLoggedIn){
+                startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            }
             startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
         }
     }
