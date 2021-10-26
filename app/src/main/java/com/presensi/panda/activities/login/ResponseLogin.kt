@@ -1,6 +1,5 @@
 package com.presensi.panda.activities.login
 
-import android.database.Observable
 import com.google.gson.annotations.SerializedName
 
 data class ResponseLogin(

@@ -16,6 +16,8 @@ import retrofit2.Response
 import android.view.Gravity
 import com.pranavpandey.android.dynamic.toasts.DynamicToast
 import com.presensi.panda.activities.main.MainActivity
+import com.presensi.panda.models.Auth
+import com.presensi.panda.models.Employee as EmployeeData
 import com.presensi.panda.models.User
 import com.presensi.panda.utils.SharedPrefManager
 
@@ -71,7 +73,7 @@ class LoginActivity : AppCompatActivity() {
     private fun postLogin(username: String, password: String) {
         showLoading(true)
         var user = UserRequest(username, password)
-        val client = ApiConfig.getApiService().postLogin(user)
+        val client = ApiConfig.getApiService(applicationContext).postLogin(user)
         client.enqueue(object : Callback<ResponseLogin> {
             override fun onResponse(call: Call<ResponseLogin>, response: Response<ResponseLogin>) {
                 showLoading(false)
@@ -79,6 +81,8 @@ class LoginActivity : AppCompatActivity() {
                 if (responseBody != null) {
                     if (responseBody.totalData!! > 0) {
                         if(responseBody.data?.roles?.get(0)?.name == "operator:User"){
+
+                            //save user
                             var user = User(
                                 responseBody.data?.id!!,
                                 responseBody.data.name,
@@ -86,6 +90,30 @@ class LoginActivity : AppCompatActivity() {
                                 responseBody.data.email
                             )
                             SharedPrefManager.getInstance(applicationContext).saveUser(user)
+
+                            //save auth
+                            var auth = Auth(
+                                responseBody.token,
+                                responseBody.expiresIn,
+                                responseBody.tokenType
+                            )
+                            SharedPrefManager.getInstance(applicationContext).saveAuth(auth)
+
+                            //save employee
+                            var employee = EmployeeData(
+                                responseBody.data.employee?.id,
+                                responseBody.data.employee?.userId,
+                                responseBody.data.employee?.idnumber,
+                                responseBody.data.employee?.name,
+                                responseBody.data.employee?.regionMendagriCode,
+                                responseBody.data.employee?.regionName,
+                                responseBody.data.employee?.position,
+                                responseBody.data.employee?.pob,
+                                responseBody.data.employee?.dob.toString(),
+                                responseBody.data.employee?.gender,
+                                responseBody.data.employee?.address.toString()
+                            )
+                            SharedPrefManager.getInstance(applicationContext).saveEmployee(employee)
 
                             val intent = Intent(applicationContext, MainActivity::class.java)
                             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK

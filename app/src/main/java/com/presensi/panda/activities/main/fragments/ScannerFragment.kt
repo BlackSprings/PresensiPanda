@@ -17,7 +17,18 @@ import com.budiyev.android.codescanner.ErrorCallback
 import com.budiyev.android.codescanner.ScanMode
 import com.presensi.panda.R
 import com.presensi.panda.activities.main.MainActivity
+import com.presensi.panda.activities.main.ResponseAttendance
 import com.presensi.panda.databinding.FragmentScannerBinding
+import com.presensi.panda.models.AttendanceEmployee
+import com.presensi.panda.network.ApiConfig
+import com.presensi.panda.network.AttendanceRequest
+import com.presensi.panda.ui.DialogFragment
+import com.presensi.panda.utils.SharedPrefManager
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.util.*
 
 class ScannerFragment : Fragment() {
 
@@ -64,13 +75,8 @@ class ScannerFragment : Fragment() {
 
             decodeCallback = DecodeCallback {
                 activity?.runOnUiThread {
-                    val mResultFragment = ResultFragment()
-                    val mFragmentManager = parentFragmentManager
-                    mFragmentManager.beginTransaction().apply {
-                        replace(R.id.frameLayout, mResultFragment, ResultFragment::class.java.simpleName)
-                        addToBackStack(null)
-                        commit()
-                    }
+                    postAttendance(it.text)
+                    codeScanner.stopPreview()
                 }
             }
 
@@ -86,7 +92,6 @@ class ScannerFragment : Fragment() {
 
         }
     }
-
 
     override fun onResume() {
         super.onResume()
@@ -123,12 +128,82 @@ class ScannerFragment : Fragment() {
                 if (grantResults.isEmpty() || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
                     Toast.makeText(
                         requireActivity(),
-                        "You need the camera permission to use this app",
+                        "Mohon izinkan aplikasi ini untuk mengakses kamera.",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
             }
         }
+    }
+
+    private fun showLoading(isLoading: Boolean) {
+        var busyDialogFragment = DialogFragment()
+        if (isLoading) {
+            busyDialogFragment.show(parentFragmentManager)
+        } else {
+            busyDialogFragment =
+                parentFragmentManager.findFragmentByTag(DialogFragment.FRAGMENT_TAG) as DialogFragment
+            busyDialogFragment.dismiss()
+        }
+    }
+
+    private fun postAttendance(attendanceId: String) {
+        showLoading(true)
+        val sharedPrefManager = SharedPrefManager.getInstance(requireContext())
+        val employeeId = sharedPrefManager.employee.id
+        val sdf = SimpleDateFormat("yyyy-M-dd")
+        val currentDate = sdf.format(Date())
+        val attendance = AttendanceRequest(employeeId!!, attendanceId, currentDate)
+        val client = ApiConfig.getApiService(requireContext()).postAttendance("Bearer ${sharedPrefManager.auth.token}",attendance)
+        client.enqueue(object : Callback<ResponseAttendance>{
+            override fun onResponse(
+                call: Call<ResponseAttendance>,
+                response: Response<ResponseAttendance>
+            ) {
+                showLoading(false)
+                binding.scannerView.visibility = View.GONE
+                val responseBody = response.body()
+                if(responseBody?.totalData!! == 1){
+                    var sharedPrefManager = SharedPrefManager.getInstance(requireContext())
+                    //clear local attendance employee
+                    sharedPrefManager.clear(SharedPrefManager.SHARED_PREF_ATTENDANCE)
+                    //save attendance employee
+                    var attendanceEmployee = AttendanceEmployee(
+                        responseBody?.data?.id!!,
+                        responseBody?.data?.localDate,
+                        responseBody?.data?.checkIn,
+                        responseBody?.data?.checkOut,
+                        responseBody?.data?.status,
+                        responseBody?.data?.attendanceId,
+                        responseBody?.data?.employeeId!!
+                    )
+                    Log.d(tag, "onResponseBody: ${responseBody.toString()} token: ${sharedPrefManager.auth.token.toString()}")
+                    sharedPrefManager.saveAttendanceEmployee(attendanceEmployee)
+                    sharedPrefManager.saveMessage(responseBody?.message.toString())
+                    Toast.makeText(requireContext(), "Data Saved", Toast.LENGTH_SHORT).show()
+                    val mResultFragment = ResultFragment()
+                    val mFragmentManager = parentFragmentManager
+                    mFragmentManager.beginTransaction().apply {
+                        replace(R.id.frameLayout, mResultFragment, ResultFragment::class.java.simpleName)
+                        addToBackStack(null)
+                        commit()
+                    }
+                }
+            }
+
+            override fun onFailure(call: Call<ResponseAttendance>, t: Throwable) {
+                showLoading(false)
+                binding.scannerView.visibility = View.GONE
+                Log.e(tag, "onFailureScanner: ${t.message} token: ${sharedPrefManager.auth.token}")
+                val mResultFragment = ResultFragment()
+                val mFragmentManager = parentFragmentManager
+                mFragmentManager.beginTransaction().apply {
+                    replace(R.id.frameLayout, mResultFragment, ResultFragment::class.java.simpleName)
+                    addToBackStack(null)
+                    commit()
+                }
+            }
+        })
     }
 
     companion object {

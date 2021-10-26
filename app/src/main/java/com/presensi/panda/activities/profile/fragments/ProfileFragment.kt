@@ -44,10 +44,21 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         }
 
         binding.btnLogout.setOnClickListener {
-            SharedPrefManager.getInstance(requireContext()).clear()
+            var sharedPrefManager = SharedPrefManager.getInstance(requireContext())
+            sharedPrefManager.clear(SharedPrefManager.SHARED_PREF_NAME)
+            sharedPrefManager.clear(SharedPrefManager.SHARED_PREF_AUTH)
+            sharedPrefManager.clear(SharedPrefManager.SHARED_PREF_EMPLOYEE)
+            sharedPrefManager.clear(SharedPrefManager.SHARED_PREF_ATTENDANCE)
             val moveLogin = Intent(activity, LoginActivity::class.java)
             startActivity(moveLogin)
         }
+        val sharedPrefManager = SharedPrefManager.getInstance(requireContext())
+        binding.txtName.text =  sharedPrefManager.user.name
+        binding.txtEmail.text = sharedPrefManager.user.username
+
+        binding.txtNameDetail.text = sharedPrefManager.employee.name
+        binding.txtEmailDetail.text = sharedPrefManager.employee.position
+
     }
 
     override fun onClick(v: View) {
