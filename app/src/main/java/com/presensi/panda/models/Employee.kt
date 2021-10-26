@@ -8,6 +8,7 @@ data class Employee(
     var id: Int?,
     var user_id: Int?,
     var id_number: String?,
+    var name: String?,
     var company_id: String?,
     var company_name: String?,
     var position: String?,

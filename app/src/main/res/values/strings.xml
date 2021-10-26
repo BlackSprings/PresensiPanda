@@ -36,4 +36,5 @@
     <string name="new_password">Password Baru</string>
     <string name="confirm_password">Konfirmasi Password</string>
     <string name="change_password">Ubah Password</string>
+    <string name="position">Jabatan</string>
 </resources>
