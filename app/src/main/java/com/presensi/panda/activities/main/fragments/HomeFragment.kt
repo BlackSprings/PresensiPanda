@@ -61,7 +61,7 @@ class HomeFragment : Fragment() {
         Log.d(tag,"onGetSharedAttendance: ${sharedPrefManager.isAttendance}")
 
         binding.btnCheckin.setOnClickListener {
-            if(check_in != null || currentDate == local_date){
+            if(check_in != null && currentDate == local_date){
                 DynamicToast.makeWarning(requireContext(),"Anda Sudah Check In Hari Ini",Toast.LENGTH_SHORT).apply {
                     setGravity(Gravity.TOP, 0, 0)
                     show()
@@ -78,12 +78,12 @@ class HomeFragment : Fragment() {
         }
 
         binding.btnCheckout.setOnClickListener {
-            if(check_out != null || currentDate == local_date){
+            if(check_out != null && currentDate == local_date){
                 DynamicToast.makeWarning(requireContext(),"Anda Sudah Check Out Hari Ini",Toast.LENGTH_SHORT).apply {
                     setGravity(Gravity.TOP, 0, 0)
                     show()
                 }
-            }else if(check_in == null || currentDate == local_date){
+            }else if(check_in == null){
                 DynamicToast.makeWarning(requireContext(),"Anda Belum Check In Hari Ini",Toast.LENGTH_SHORT).apply {
                     setGravity(Gravity.TOP, 0, 0)
                     show()
