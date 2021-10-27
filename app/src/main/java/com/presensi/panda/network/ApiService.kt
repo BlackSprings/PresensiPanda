@@ -14,14 +14,14 @@ interface ApiService {
     ): Call<ResponseLogin>
 
     @Headers("Content-Type: application/json")
-    @POST("api/test/attendances")
+    @POST("api/v2/attendances")
     fun postAttendance(
         @Header("Authorization") token: String,
         @Body attendanceRequest: AttendanceRequest
     ): Call<ResponseAttendance>
 
     @Headers("Content-Type: application/json")
-    @GET("api/test/attendance_employees/{id}/history")
+    @GET("api/v2/attendance_employees/{id}/history")
     fun getHistories(
         @Header("Authorization") token: String,
         @Path("id") employee_id: Int,
