@@ -28,7 +28,7 @@ internal class AuthInterceptor(context: Context) : Interceptor {
                         val refreshTokenRequest =
                             originalRequest
                                 .newBuilder()
-                                .method("POST", chain.request().body)
+                                .get()
                                 .url(Reference.refreshUrl)
                                 .addHeader("Authorization","Bearer ${currentToken}")
                                 .build()
