@@ -3,7 +3,6 @@ package com.presensi.panda.activities.splashscreen
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Handler
 import androidx.lifecycle.lifecycleScope
 import com.presensi.panda.R
 import com.presensi.panda.activities.login.LoginActivity

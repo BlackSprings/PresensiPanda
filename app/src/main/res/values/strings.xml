@@ -37,4 +37,6 @@
     <string name="confirm_password">Konfirmasi Password</string>
     <string name="change_password">Ubah Password</string>
     <string name="position">Jabatan</string>
+    <string name="empty_attendance_log">Data Presensi Masih Kosong.</string>
+    <string name="fetching_data">Sedang memeriksa data, mohon tunggu...</string>
 </resources>
