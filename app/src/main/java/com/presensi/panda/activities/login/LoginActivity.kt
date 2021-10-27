@@ -72,7 +72,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun postLogin(username: String, password: String) {
         showLoading(true)
-        var user = UserRequest(username, password)
+        val user = UserRequest(username, password)
         val client = ApiConfig.getApiService(applicationContext).postLogin(user)
         client.enqueue(object : Callback<ResponseLogin> {
             override fun onResponse(call: Call<ResponseLogin>, response: Response<ResponseLogin>) {
@@ -128,6 +128,7 @@ class LoginActivity : AppCompatActivity() {
                     }
                 } else {
                     Log.e(TAG, "onFailureLoginPost: ${response.message()}")
+                    showDialog("Username dan Password tidak dapat Kami Kenali")
                 }
             }
 
