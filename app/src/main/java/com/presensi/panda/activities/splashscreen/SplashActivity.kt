@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.lifecycle.lifecycleScope
 import com.presensi.panda.R
+import com.presensi.panda.activities.brand.BrandingActivity
 import com.presensi.panda.activities.login.LoginActivity
 import com.presensi.panda.activities.main.MainActivity
 import com.presensi.panda.utils.SharedPrefManager
@@ -24,7 +25,7 @@ class SplashActivity : AppCompatActivity() {
             if(SharedPrefManager.getInstance(this@SplashActivity).isLoggedIn){
                 startActivity(Intent(this@SplashActivity, MainActivity::class.java))
             }
-            startActivity(Intent(this@SplashActivity, LoginActivity::class.java))
+            startActivity(Intent(this@SplashActivity, BrandingActivity::class.java))
         }
     }
 }

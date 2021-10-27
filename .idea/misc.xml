@@ -24,6 +24,7 @@
         <entry key="app/src/main/res/drawable/solid_circle.xml" value="0.16145833333333334" />
         <entry key="app/src/main/res/layout-v21/activity_profile.xml" value="0.1" />
         <entry key="app/src/main/res/layout-v26/fragment_about_app.xml" value="0.1609375" />
+        <entry key="app/src/main/res/layout/activity_branding.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.19796954314720813" />
         <entry key="app/src/main/res/layout/activity_profile.xml" value="0.2" />
