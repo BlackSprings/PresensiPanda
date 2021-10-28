@@ -67,7 +67,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
     }
 
     override fun onClick(v: View) {
-        if (v.id == R.id.imgToAbout){
+        if (v.id == R.id.imgToAbout || v.id == R.id.txt_about){
             val mAboutFragment = AboutAppFragment()
             val mFragmentManager = parentFragmentManager
             mFragmentManager.beginTransaction().apply {
@@ -77,7 +77,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             }
         }
 
-        if(v.id == R.id.imgToHelp){
+        if(v.id == R.id.imgToHelp || v.id == R.id.txt_contact){
             val mHelpFragment = HelpFragment()
             val mFragmentManager = parentFragmentManager
             mFragmentManager.beginTransaction().apply {
@@ -87,7 +87,7 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             }
         }
 
-        if(v.id == R.id.imgToChangePwd){
+        if(v.id == R.id.imgToChangePwd || v.id == R.id.txt_change_pwd){
             val mChangePasswordFragment = ChangePasswordFragment()
             val mFragmentManager = parentFragmentManager
             mFragmentManager.beginTransaction().apply {

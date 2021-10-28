@@ -47,6 +47,6 @@
     <string name="close">Tutup</string>
     <string name="choose">Pilih</string>
     <string name="welcome">Selamat Datang</string>
-    <string name="intro_message">Silahkan Pilih Server Terlebih dahulu</string>
+    <string name="intro_message">Silakan pilih Server Terlebih dahulu</string>
     <string name="web_help_2">www.puskomedia.id</string>
 </resources>

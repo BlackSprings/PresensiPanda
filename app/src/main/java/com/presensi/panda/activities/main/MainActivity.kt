@@ -66,20 +66,4 @@ class MainActivity : AppCompatActivity() {
         // get the reference of the bottomNavigationView and set the visibility.
         binding.bottomNavigationView.visibility = visibility
     }
-
-    private var doubleBackToExitPressedOnce = false
-    override fun onBackPressed() {
-        if (doubleBackToExitPressedOnce) {
-            super.onBackPressed()
-            finish()
-            return
-        }
-
-        this.doubleBackToExitPressedOnce = true
-        Toast.makeText(this, "Tekan kembali lagi untuk keluar", Toast.LENGTH_SHORT).show()
-        lifecycleScope.launch {
-            delay(2000)
-            doubleBackToExitPressedOnce = false
-        }
-    }
 }
