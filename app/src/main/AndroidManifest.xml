@@ -14,24 +14,27 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Presensi_panda">
         <activity
-            android:name="com.presensi.panda.activities.splashscreen.SplashActivity"
-            android:theme="@style/Theme.Design.Light.NoActionBar"
-            android:exported="true" >
+            android:name=".activities.brand.BrandingActivity"
+            android:exported="true" />
+        <activity
+            android:name=".activities.splashscreen.SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Design.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.presensi.panda.activities.main.MainActivity"
+            android:name=".activities.main.MainActivity"
             android:exported="true" />
         <activity
-            android:name="com.presensi.panda.activities.profile.ProfileActivity"
+            android:name=".activities.profile.ProfileActivity"
             android:exported="true" />
         <activity
-            android:name="com.presensi.panda.activities.login.LoginActivity"
-            android:exported="true">
-        </activity>
+            android:name=".activities.login.LoginActivity"
+            android:exported="true" />
     </application>
 
 </manifest>

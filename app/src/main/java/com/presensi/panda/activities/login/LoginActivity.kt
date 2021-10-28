@@ -15,6 +15,7 @@ import retrofit2.Callback
 import retrofit2.Response
 import android.view.Gravity
 import com.pranavpandey.android.dynamic.toasts.DynamicToast
+import com.presensi.panda.activities.brand.BrandingActivity
 import com.presensi.panda.activities.main.MainActivity
 import com.presensi.panda.models.Auth
 import com.presensi.panda.models.Employee as EmployeeData
@@ -149,7 +150,6 @@ class LoginActivity : AppCompatActivity() {
         if(SharedPrefManager.getInstance(this).isLoggedIn){
             val intent = Intent(applicationContext, MainActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-
             startActivity(intent)
         }
     }

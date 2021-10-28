@@ -39,4 +39,13 @@
     <string name="position">Jabatan</string>
     <string name="empty_attendance_log">Data Presensi Masih Kosong.</string>
     <string name="fetching_data">Sedang memeriksa data, mohon tunggu...</string>
+    <string name="choose_server">Pilih Server</string>
+    <string name="sipanda">Sipanda</string>
+    <string name="sidemit">Sidemit</string>
+    <string name="simba">Simba</string>
+    <string name="sinar">Sinar</string>
+    <string name="close">Tutup</string>
+    <string name="choose">Pilih</string>
+    <string name="welcome">Selamat Datang</string>
+    <string name="intro_message">Silahkan Pilih Server Terlebih dahulu</string>
 </resources>

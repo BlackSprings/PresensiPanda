@@ -22,6 +22,7 @@ internal class AuthInterceptor(context: Context) : Interceptor {
         try {
             if(response.isSuccessful){
                 if(responseBody.contains("code")){
+                    val refreshTokenUrl = sharedPrefManager.server+Reference.refreshUrl
                     val jsonObject = JSONObject(responseBody)
                     val code = jsonObject.optInt("code")
                     if(code == 401){
@@ -29,7 +30,7 @@ internal class AuthInterceptor(context: Context) : Interceptor {
                             originalRequest
                                 .newBuilder()
                                 .get()
-                                .url(Reference.refreshUrl)
+                                .url(refreshTokenUrl)
                                 .addHeader("Authorization","Bearer ${currentToken}")
                                 .build()
                         val refreshResponse = chain.proceed(refreshTokenRequest)
@@ -53,6 +54,7 @@ internal class AuthInterceptor(context: Context) : Interceptor {
                         }
                         Log.d("refreshToken","onResponseRefreshToken ${refreshResponse.peekBody(2048).string()}")
                         Log.i("info","kie kadu refresh token")
+                        return response
                     }
                 }
             }
