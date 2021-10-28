@@ -17,6 +17,12 @@ class SharedPrefManager private constructor(private val context: Context){
             return sharedPreferences.getInt("id", -1) != -1
         }
 
+    val server: String
+        get() {
+            val sharedPreferences = context.getSharedPreferences(SHARED_PREF_SERVER, Context.MODE_PRIVATE)
+            return sharedPreferences.getString("server",null).toString()
+        }
+
     val message: String
         get() {
             val sharedPreferences = context.getSharedPreferences(SHARED_PREF_ATTENDANCE, Context.MODE_PRIVATE)
@@ -141,6 +147,14 @@ class SharedPrefManager private constructor(private val context: Context){
         editor.apply()
     }
 
+    fun saveServer(server: String) {
+        val sharedPrefManager = context.getSharedPreferences(SHARED_PREF_SERVER, Context.MODE_PRIVATE)
+        val editor = sharedPrefManager.edit()
+
+        editor.putString("server",server)
+        editor.apply()
+    }
+
     fun clear(SHARED_KEY : String) {
         val sharedPreferences = context.getSharedPreferences(SHARED_KEY, Context.MODE_PRIVATE)
         val editor = sharedPreferences.edit()
@@ -152,7 +166,8 @@ class SharedPrefManager private constructor(private val context: Context){
         val SHARED_PREF_NAME = "local_user_presistent_data"
         val SHARED_PREF_AUTH = "local_auth_presistent_data"
         val SHARED_PREF_EMPLOYEE = "local_employee_presistent_data"
-        val SHARED_PREF_ATTENDANCE = "lcoal_attendance_employee_presistent_data"
+        val SHARED_PREF_ATTENDANCE = "local_attendance_employee_presistent_data"
+        val SHARED_PREF_SERVER = "local_server_presistent_data"
         private var mInstance: SharedPrefManager? = null
         @Synchronized
         fun getInstance(context: Context): SharedPrefManager {

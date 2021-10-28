@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.appcompat.app.AppCompatActivity
 import com.presensi.panda.R
+import com.presensi.panda.activities.brand.BrandingActivity
 import com.presensi.panda.activities.login.LoginActivity
 import com.presensi.panda.activities.profile.ProfileActivity
 import com.presensi.panda.databinding.FragmentProfileBinding
@@ -49,7 +50,8 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             sharedPrefManager.clear(SharedPrefManager.SHARED_PREF_AUTH)
             sharedPrefManager.clear(SharedPrefManager.SHARED_PREF_EMPLOYEE)
             sharedPrefManager.clear(SharedPrefManager.SHARED_PREF_ATTENDANCE)
-            val moveLogin = Intent(activity, LoginActivity::class.java)
+            sharedPrefManager.clear(SharedPrefManager.SHARED_PREF_SERVER)
+            val moveLogin = Intent(activity, BrandingActivity::class.java)
             startActivity(moveLogin)
         }
         val sharedPrefManager = SharedPrefManager.getInstance(requireContext())
