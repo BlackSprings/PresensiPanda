@@ -4,16 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
 import com.presensi.panda.activities.profile.fragments.ProfileFragment
 import com.presensi.panda.R
 import com.presensi.panda.activities.login.LoginActivity
 import com.presensi.panda.activities.main.MainActivity
 import com.presensi.panda.databinding.ActivityProfileBinding
 import com.presensi.panda.utils.SharedPrefManager
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class ProfileActivity : AppCompatActivity() {
 
@@ -63,12 +59,12 @@ class ProfileActivity : AppCompatActivity() {
         }
     }
 
-    override fun onBackPressed() {
-        super.onBackPressed()
-        val moveProfile = Intent(this@ProfileActivity, MainActivity::class.java)
-        moveProfile.flags =  Intent.FLAG_ACTIVITY_CLEAR_TASK
-        startActivity(moveProfile)
-    }
+//    override fun onBackPressed() {
+//        super.onBackPressed()
+//        val moveProfile = Intent(this@ProfileActivity, MainActivity::class.java)
+//        moveProfile.flags =  Intent.FLAG_ACTIVITY_CLEAR_TASK
+//        startActivity(moveProfile)
+//    }
 
     fun setBottomNavigationVisibility(visibility: Int) {
         // get the reference of the bottomNavigationView and set the visibility.

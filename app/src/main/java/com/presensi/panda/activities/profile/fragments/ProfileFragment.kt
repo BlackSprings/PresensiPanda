@@ -7,10 +7,12 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import com.presensi.panda.R
 import com.presensi.panda.activities.brand.BrandingActivity
 import com.presensi.panda.activities.login.LoginActivity
+import com.presensi.panda.activities.main.MainActivity
 import com.presensi.panda.activities.profile.ProfileActivity
 import com.presensi.panda.databinding.FragmentProfileBinding
 import com.presensi.panda.utils.SharedPrefManager
@@ -28,6 +30,17 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
         val view = binding.root
         return view
+    }
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        activity?.onBackPressedDispatcher?.addCallback(this, object: OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                val moveProfile = Intent(activity, MainActivity::class.java)
+                moveProfile.flags =  Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+                startActivity(moveProfile)
+            }
+        })
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
