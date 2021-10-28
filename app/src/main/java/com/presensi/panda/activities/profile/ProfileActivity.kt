@@ -57,9 +57,17 @@ class ProfileActivity : AppCompatActivity() {
         when(item.itemId){
             R.id.home_nav -> {
                 val moveProfile = Intent(this@ProfileActivity, MainActivity::class.java)
+                moveProfile.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(moveProfile)
             }
         }
+    }
+
+    override fun onBackPressed() {
+        super.onBackPressed()
+        val moveProfile = Intent(this@ProfileActivity, MainActivity::class.java)
+        moveProfile.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+        startActivity(moveProfile)
     }
 
     fun setBottomNavigationVisibility(visibility: Int) {
