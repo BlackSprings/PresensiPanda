@@ -15,34 +15,34 @@
 
     <RadioGroup
         android:id="@+id/rg_options"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
         <RadioButton
             android:id="@+id/rb_sipanda"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/sipanda" />
 
         <RadioButton
             android:id="@+id/rb_sidemit"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/sidemit" />
 
         <RadioButton
             android:id="@+id/rb_simba"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/simba" />
 
         <RadioButton
             android:id="@+id/rb_sinar"
-            android:layout_width="match_parent"
+            android:layout_width="300dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             android:text="@string/sinar" />

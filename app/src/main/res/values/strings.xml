@@ -5,7 +5,7 @@
     <string name="login_message">Masukan akun anda</string>
     <string name="username">Username</string>
     <string name="password">Password</string>
-    <string name="version">Presensi V.1.1</string>
+    <string name="version">Presensi V.2.0.0</string>
     <string name="email">email</string>
     <string name="sign_out">Sign Out</string>
     <string name="name">name</string>
@@ -26,11 +26,11 @@
     <string name="result_message_3">Kehadiran</string>
     <string name="result_message_2">Sudah Presensi</string>
     <string name="back">Kembali</string>
-    <string name="dummy_about_app">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and.</string>
+    <string name="dummy_about_app">Presensi Panda sebuah aplikasi terobosan baru dari Puskomedia, sebagai wujud komitmen menuju satu data yang terhubung dengan Panda Sistem Informasi Desa. Presensi Digital berbasis Android ini dikembangkan dengan teknologi Kecerdasan Buatan (Artificial Intelligence) untuk mempermudah dalam pelayanan dan hidup manusia yang lebih baik.</string>
     <string name="help_message">Kunjungi Sosial Media kami di:</string>
     <string name="web_help_1">www.panda.id</string>
     <string name="instagram">Teknologi Panda</string>
-    <string name="facebook">Puskomedia.ID</string>
+    <string name="facebook">PuskoMedia Indonesia</string>
     <string name="save">Simpan</string>
     <string name="old_password">Password Lama</string>
     <string name="new_password">Password Baru</string>
@@ -48,4 +48,5 @@
     <string name="choose">Pilih</string>
     <string name="welcome">Selamat Datang</string>
     <string name="intro_message">Silahkan Pilih Server Terlebih dahulu</string>
+    <string name="web_help_2">www.puskomedia.id</string>
 </resources>
