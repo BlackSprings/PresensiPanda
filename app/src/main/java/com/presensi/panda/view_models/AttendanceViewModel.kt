@@ -11,6 +11,9 @@ import com.presensi.panda.network.ApiConfig
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.text.SimpleDateFormat
+import java.time.LocalDate
+import kotlin.collections.ArrayList
 
 class AttendanceViewModel : ViewModel() {
 
@@ -26,8 +29,10 @@ class AttendanceViewModel : ViewModel() {
             ) {
                 val responseBody = response.body()
                 val listAttendances = ArrayList<Attendance>()
+                val sdf = SimpleDateFormat("dd")
                 for(item in responseBody?.data!!){
-                    var attendance = Attendance(item?.localDate.toString(),item?.localDate.toString(),item?.checkIn,item?.checkOut)
+                    var currentDate = sdf.parse(item?.localDate.toString())
+                    var attendance = Attendance(day[currentDate.day],item?.localDate.toString(),item?.checkIn,item?.checkOut)
                     listAttendances.add(attendance)
                 }
                 _listLog.value = listAttendances
@@ -43,6 +48,7 @@ class AttendanceViewModel : ViewModel() {
 
     companion object {
         private const val TAG = "AttendanceViewModel"
+        private val day = arrayOf("Senin","Selasa","Rabu","Kamis","Jum'at","Sabtu","Minggu")
     }
 
 }

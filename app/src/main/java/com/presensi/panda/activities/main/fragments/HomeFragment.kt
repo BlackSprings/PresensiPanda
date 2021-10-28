@@ -14,24 +14,21 @@ import com.pranavpandey.android.dynamic.toasts.DynamicToast
 import com.presensi.panda.models.Attendance
 import com.presensi.panda.R
 import com.presensi.panda.activities.main.MainActivity
-import com.presensi.panda.activities.main.ResponseLogAttendanceEmployee
 import com.presensi.panda.activities.main.adapters.ListAttendanceAdapter
 import com.presensi.panda.databinding.FragmentHomeBinding
-import com.presensi.panda.network.ApiConfig
-import com.presensi.panda.network.DummyRequest
 import com.presensi.panda.utils.SharedPrefManager
 import com.presensi.panda.view_models.AttendanceViewModel
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
     private val binding get() = _binding!!
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,

@@ -38,6 +38,9 @@ class ProfileFragment : Fragment(), View.OnClickListener {
         imgAbout.setOnClickListener(this)
         imgHelp.setOnClickListener(this)
         imgChangePassword.setOnClickListener(this)
+        binding.txtChangePwd.setOnClickListener(this)
+        binding.txtAbout.setOnClickListener(this)
+        binding.txtContact.setOnClickListener(this)
         var actionBar = (activity as AppCompatActivity).supportActionBar
         actionBar?.hide()
         if(activity is ProfileActivity){
