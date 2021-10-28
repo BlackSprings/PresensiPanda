@@ -25,7 +25,9 @@ class SplashActivity : AppCompatActivity() {
             if(SharedPrefManager.getInstance(this@SplashActivity).isLoggedIn){
                 startActivity(Intent(this@SplashActivity, MainActivity::class.java))
             }
-            startActivity(Intent(this@SplashActivity, BrandingActivity::class.java))
+            val moveBrand = Intent(this@SplashActivity, BrandingActivity::class.java)
+            moveBrand.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
+            startActivity(moveBrand)
         }
     }
 }

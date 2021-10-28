@@ -52,7 +52,10 @@ class ProfileFragment : Fragment(), View.OnClickListener {
             sharedPrefManager.clear(SharedPrefManager.SHARED_PREF_ATTENDANCE)
             sharedPrefManager.clear(SharedPrefManager.SHARED_PREF_SERVER)
             val moveLogin = Intent(activity, BrandingActivity::class.java)
+            moveLogin.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP or
+                    Intent.FLAG_ACTIVITY_NEW_TASK
             startActivity(moveLogin)
+            (activity as AppCompatActivity).finish()
         }
         val sharedPrefManager = SharedPrefManager.getInstance(requireContext())
         binding.txtName.text =  sharedPrefManager.user.name

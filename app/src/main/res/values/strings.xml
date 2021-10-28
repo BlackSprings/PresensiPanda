@@ -40,7 +40,7 @@
     <string name="empty_attendance_log">Data Presensi Masih Kosong.</string>
     <string name="fetching_data">Sedang memeriksa data, mohon tunggu...</string>
     <string name="choose_server">Pilih Server</string>
-    <string name="sipanda">Sipanda</string>
+    <string name="sipanda">PANDA</string>
     <string name="sidemit">Sidemit</string>
     <string name="simba">Simba</string>
     <string name="sinar">Sinar</string>

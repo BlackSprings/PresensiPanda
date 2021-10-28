@@ -63,9 +63,9 @@ class BrandingActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
+            finish()
             return
         }
-
         this.doubleBackToExitPressedOnce = true
         Toast.makeText(this, "Tekan kembali lagi untuk keluar", Toast.LENGTH_SHORT).show()
         lifecycleScope.launch {
@@ -81,12 +81,6 @@ class BrandingActivity : AppCompatActivity() {
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
-
-//        if(SharedPrefManager.getInstance(this).server.isNotEmpty()){
-//            val intent = Intent(applicationContext, LoginActivity::class.java)
-//            intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
-//            startActivity(intent)
-//        }
     }
 
 

@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import com.presensi.panda.activities.main.fragments.HomeFragment
 import com.presensi.panda.activities.profile.ProfileActivity
 import com.presensi.panda.R
+import com.presensi.panda.activities.brand.BrandingActivity
 import com.presensi.panda.activities.login.LoginActivity
 import com.presensi.panda.databinding.ActivityMainBinding
 import com.presensi.panda.utils.SharedPrefManager
@@ -45,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         super.onStart()
         binding.bottomNavigationView.selectedItemId = R.id.home_nav
         if(!SharedPrefManager.getInstance(this).isLoggedIn){
-            val intent = Intent(applicationContext, LoginActivity::class.java)
+            val intent = Intent(applicationContext, BrandingActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
             startActivity(intent)
         }
@@ -70,6 +71,7 @@ class MainActivity : AppCompatActivity() {
     override fun onBackPressed() {
         if (doubleBackToExitPressedOnce) {
             super.onBackPressed()
+            finish()
             return
         }
 
