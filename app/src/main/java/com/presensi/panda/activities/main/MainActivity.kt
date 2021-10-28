@@ -57,7 +57,6 @@ class MainActivity : AppCompatActivity() {
         when(item.itemId){
             R.id.profile_nav -> {
                 val moveProfile = Intent(this@MainActivity, ProfileActivity::class.java)
-                moveProfile.flags = Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK
                 startActivity(moveProfile)
             }
         }
