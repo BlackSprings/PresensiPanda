@@ -15,7 +15,7 @@ internal class AuthInterceptor(context: Context) : Interceptor {
     override fun intercept(chain: Interceptor.Chain): Response {
         val sharedPrefManager = SharedPrefManager.getInstance(context)
         val currentToken = sharedPrefManager.auth.token
-        val originalRequest = chain.request()
+        var originalRequest = chain.request()
         val response : Response = chain.proceed(chain.request())
         val responseBody : String = response.peekBody(2048).string() //its weird
 
@@ -50,20 +50,19 @@ internal class AuthInterceptor(context: Context) : Interceptor {
                                     token_type,
                                 )
                                 sharedPrefManager.saveAuth(auth)
+                                originalRequest = originalRequest.newBuilder().header("Authorization","Bearer ${token}").build()
+                                return chain.proceed(originalRequest)
                             }
                         }
                         Log.d("refreshToken","onResponseRefreshToken ${refreshResponse.peekBody(2048).string()}")
                         Log.i("info","kie kadu refresh token")
-                        return response
                     }
                 }
+                return response
             }
         }catch (e: Exception){
             Log.e("interceptor","onInterceptorError: ${e.message}")
         }
-
-        Log.d("interceptor","onInterceptor: ${originalRequest.body.toString()}")
-        Log.d("interceptor","onInterceptorResponse: ${responseBody}")
         return response
     }
 }
