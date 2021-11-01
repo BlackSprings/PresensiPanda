@@ -22,7 +22,9 @@ internal class AuthInterceptor(context: Context) : Interceptor {
         try {
             if(response.isSuccessful){
                 if(responseBody.contains("code")){
-                    val refreshTokenUrl = sharedPrefManager.server+Reference.refreshUrl
+                    val server = if(sharedPrefManager.server.isEmpty()) Reference.sipanda else sharedPrefManager.server
+                    val refreshTokenUrl = server+Reference.refreshUrl
+                    Log.d("onIntercept","refreshTokenUrl: ${sharedPrefManager.server}")
                     val jsonObject = JSONObject(responseBody)
                     val code = jsonObject.optInt("code")
                     if(code == 401){
@@ -34,6 +36,7 @@ internal class AuthInterceptor(context: Context) : Interceptor {
                                 .addHeader("Authorization","Bearer ${currentToken}")
                                 .build()
                         val refreshResponse = chain.proceed(refreshTokenRequest)
+                        Log.d("onResponseCode","refreshResponse: $refreshTokenRequest")
                         val refreshResponseBody = refreshResponse.peekBody(2048).string() //its super weird
                         if(refreshResponse.isSuccessful){
                             if(refreshResponseBody.contains("status")){

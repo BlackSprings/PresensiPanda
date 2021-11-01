@@ -4,17 +4,12 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
-import android.widget.Toast
-import androidx.lifecycle.lifecycleScope
 import com.presensi.panda.activities.main.fragments.HomeFragment
 import com.presensi.panda.activities.profile.ProfileActivity
 import com.presensi.panda.R
 import com.presensi.panda.activities.brand.BrandingActivity
-import com.presensi.panda.activities.login.LoginActivity
 import com.presensi.panda.databinding.ActivityMainBinding
 import com.presensi.panda.utils.SharedPrefManager
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 

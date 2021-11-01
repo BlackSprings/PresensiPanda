@@ -12,11 +12,11 @@
         android:layout_width="80dp"
         android:layout_height="80dp"
         android:layout_marginTop="60dp"
+        android:src="@drawable/picture_profile"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:src="@drawable/picture_profile" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
         android:id="@+id/txt_name"
@@ -26,8 +26,8 @@
         android:layout_marginTop="16dp"
         android:layout_marginEnd="32dp"
         android:text="@string/username"
-        android:textColor="@color/white"
         android:textAlignment="center"
+        android:textColor="@color/white"
         android:textSize="16dp"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
@@ -56,14 +56,12 @@
         android:layout_marginStart="16dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="16dp"
-        android:layout_marginBottom="250dp"
         android:background="@drawable/layout_profile_bg"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_logout"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_email"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintTop_toBottomOf="@+id/txt_email">
 
         <ImageView
             android:id="@+id/imageView6"
@@ -73,7 +71,8 @@
             android:layout_marginTop="16dp"
             android:src="@drawable/lock"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider_email" />
+            app:layout_constraintTop_toBottomOf="@+id/divider_email"
+            android:contentDescription="TODO" />
 
         <TextView
             android:id="@+id/txt_name_detail"
@@ -97,7 +96,8 @@
             android:layout_marginTop="36dp"
             android:src="@drawable/ic_profile_name"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="TODO" />
 
         <View
             android:id="@+id/divider_name"
@@ -133,7 +133,8 @@
             android:layout_marginTop="16dp"
             android:src="@drawable/ic_profile_email"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider_name" />
+            app:layout_constraintTop_toBottomOf="@+id/divider_name"
+            android:contentDescription="TODO" />
 
         <TextView
             android:id="@+id/txt_about"
@@ -170,7 +171,8 @@
             android:layout_marginTop="16dp"
             android:src="@drawable/ic_profile_tentangapp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider_email2" />
+            app:layout_constraintTop_toBottomOf="@+id/divider_email2"
+            android:contentDescription="TODO" />
 
         <View
             android:id="@+id/divider_email"
@@ -221,7 +223,8 @@
             android:layout_marginTop="16dp"
             android:src="@drawable/ic_profile_faq"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider_about" />
+            app:layout_constraintTop_toBottomOf="@+id/divider_about"
+            android:contentDescription="TODO" />
 
         <View
             android:id="@+id/divider_about"
@@ -243,7 +246,8 @@
             android:layout_marginEnd="32dp"
             android:src="@drawable/ic_profile_details"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider_email2" />
+            app:layout_constraintTop_toBottomOf="@+id/divider_email2"
+            android:contentDescription="TODO" />
 
         <ImageView
             android:id="@+id/imgToChangePwd"
@@ -253,7 +257,8 @@
             android:layout_marginEnd="32dp"
             android:src="@drawable/ic_profile_details"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider_email" />
+            app:layout_constraintTop_toBottomOf="@+id/divider_email"
+            android:contentDescription="TODO" />
 
         <ImageView
             android:id="@+id/imgToHelp"
@@ -263,7 +268,8 @@
             android:layout_marginEnd="32dp"
             android:src="@drawable/ic_profile_details"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider_about" />
+            app:layout_constraintTop_toBottomOf="@+id/divider_about"
+            android:contentDescription="TODO" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -273,13 +279,15 @@
         android:layout_marginStart="80dp"
         android:layout_marginTop="32dp"
         android:layout_marginEnd="80dp"
+        android:layout_marginBottom="64dp"
         android:backgroundTint="@color/btn_logout"
         android:padding="16dp"
         android:text="@string/sign_out"
         android:textColor="@color/white"
         app:cornerRadius="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
 

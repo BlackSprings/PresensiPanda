@@ -85,7 +85,7 @@ class LoginActivity : AppCompatActivity() {
 
                             //save user
                             var user = User(
-                                responseBody.data?.id!!,
+                                responseBody.data.id!!,
                                 responseBody.data.name,
                                 responseBody.data.username,
                                 responseBody.data.email

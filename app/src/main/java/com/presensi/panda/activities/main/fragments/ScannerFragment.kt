@@ -39,7 +39,7 @@ class ScannerFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         _binding = FragmentScannerBinding.inflate(inflater, container, false)
         val view = binding.root
@@ -164,22 +164,22 @@ class ScannerFragment : Fragment() {
                 binding.scannerView.visibility = View.GONE
                 val responseBody = response.body()
                 if(responseBody?.totalData!! == 1){
-                    var sharedPrefManager = SharedPrefManager.getInstance(requireContext())
+                    val sharedPrefManager = SharedPrefManager.getInstance(requireContext())
                     //clear local attendance employee
                     sharedPrefManager.clear(SharedPrefManager.SHARED_PREF_ATTENDANCE)
                     //save attendance employee
-                    var attendanceEmployee = AttendanceEmployee(
-                        responseBody?.data?.id!!,
-                        responseBody?.data?.localDate,
-                        responseBody?.data?.checkIn,
-                        responseBody?.data?.checkOut,
-                        responseBody?.data?.status,
-                        responseBody?.data?.attendanceId,
-                        responseBody?.data?.employeeId!!
+                    val attendanceEmployee = AttendanceEmployee(
+                        responseBody.data?.id!!,
+                        responseBody.data.localDate,
+                        responseBody.data.checkIn,
+                        responseBody.data.checkOut,
+                        responseBody.data.status,
+                        responseBody.data.attendanceId,
+                        responseBody.data.employeeId!!
                     )
                     Log.d(tag, "onResponseBody: ${responseBody.toString()} token: ${sharedPrefManager.auth.token.toString()}")
                     sharedPrefManager.saveAttendanceEmployee(attendanceEmployee)
-                    sharedPrefManager.saveMessage(responseBody?.message.toString())
+                    sharedPrefManager.saveMessage(responseBody.message.toString())
                     Toast.makeText(requireContext(), "Data Saved", Toast.LENGTH_SHORT).show()
                     val mResultFragment = ResultFragment()
                     val mFragmentManager = parentFragmentManager

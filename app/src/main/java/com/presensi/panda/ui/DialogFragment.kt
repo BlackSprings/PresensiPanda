@@ -17,7 +17,7 @@ class DialogFragment : DialogFragment() {
         const val FRAGMENT_TAG = "busy"
     }
 
-    fun newInstance() = BusyDialogFragment()
+    private fun newInstance() = BusyDialogFragment()
 
     fun show(supportFragment: FragmentManager): BusyDialogFragment {
         val dialog = newInstance()
