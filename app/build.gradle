@@ -7,10 +7,10 @@ plugins {
 android {
     signingConfigs {
         debug {
-            storeFile file('/home/zaenur/Documents/dev/android_keystore_presensi_panda/my-upload-key.keystore')
-            storePassword pass_default
-            keyAlias 'my-key-alias'
-            keyPassword pass_default
+//            storeFile file('/home/zaenur/Documents/dev/android_keystore_presensi_panda/my-upload-key.keystore')
+//            storePassword pass_default
+//            keyAlias 'my-key-alias'
+//            keyPassword pass_default
         }
     }
     compileSdk 30
