@@ -121,7 +121,7 @@ class HomeFragment : Fragment() {
                     .build()
 
             dateRangePicker.show(
-                supportFragmentManager,
+                childFragmentManager,
                 "date_range_picker"
             )
 
@@ -131,11 +131,14 @@ class HomeFragment : Fragment() {
                 val endDate = dateSelected.second
 
                 if (startDate != null && endDate != null) {
-                    Toast.makeText(applicationContext, "Mulai : ${convertLongToTime(startDate)}\n" +
+                    Toast.makeText(getActivity(), "Mulai : ${convertLongToTime(startDate)}\n" +
                             "\nSelesai : ${convertLongToTime(endDate)}", Toast.LENGTH_SHORT).show()
                 }
+
             }
+
         }
+
 
         if(activity is MainActivity){
             (activity as MainActivity).setBottomNavigationVisibility(View.VISIBLE)
@@ -156,8 +159,16 @@ class HomeFragment : Fragment() {
         val adapter = ListAttendanceAdapter(listAttendance)
         binding.rvAttendances.adapter = adapter
     }
-    
 
 
 
+
+    fun convertLongToTime(time: Long): String{
+        val date = Date(time)
+        val format = SimpleDateFormat(
+            "dd.MM.yyyy",
+            Locale.getDefault())
+        return format.format(date)
+
+    }
 }
