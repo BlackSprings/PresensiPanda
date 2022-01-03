@@ -7,9 +7,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
 import android.widget.Toast
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.android.material.datepicker.MaterialDatePicker
 import com.pranavpandey.android.dynamic.toasts.DynamicToast
 import com.presensi.panda.models.Attendance
 import com.presensi.panda.R
@@ -109,11 +111,38 @@ class HomeFragment : Fragment() {
                 }
             }
         }
+        
+        binding.btnDateRange.setOnClickListener {
+            
+            val dateRangePicker =
+                MaterialDatePicker
+                    .Builder.dateRangePicker()
+                    .setTitleText("Select Date")
+                    .build()
+
+            dateRangePicker.show(
+                supportFragmentManager,
+                "date_range_picker"
+            )
+
+            dateRangePicker.addOnPositiveButtonClickListener { dateSelected ->
+
+                val startDate = dateSelected.first
+                val endDate = dateSelected.second
+
+                if (startDate != null && endDate != null) {
+                    Toast.makeText(applicationContext, "Mulai : ${convertLongToTime(startDate)}\n" +
+                            "\nSelesai : ${convertLongToTime(endDate)}", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
 
         if(activity is MainActivity){
             (activity as MainActivity).setBottomNavigationVisibility(View.VISIBLE)
         }
     }
+
+
 
     private fun setHistoriesAttendance(listAttendance: List<Attendance>) {
         if(listAttendance.isEmpty()){
@@ -127,5 +156,8 @@ class HomeFragment : Fragment() {
         val adapter = ListAttendanceAdapter(listAttendance)
         binding.rvAttendances.adapter = adapter
     }
+    
+
+
 
 }

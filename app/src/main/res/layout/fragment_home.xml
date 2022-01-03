@@ -98,6 +98,7 @@
             app:layout_constraintStart_toEndOf="@+id/btn_checkin"
             app:layout_constraintTop_toTopOf="parent" />
 
+
         <LinearLayout
             android:id="@+id/linearLayout"
             android:layout_width="match_parent"
@@ -122,6 +123,24 @@
                 android:textColor="@color/text_grey_dark"
                 android:textSize="16dp"
                 android:textStyle="bold" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnDateRange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="24dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginEnd="8dp"
+                android:padding="13dp"
+                android:text="@string/check_in"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                app:backgroundTint="@color/btn_login_checkin"
+                app:cornerRadius="8dp"
+                app:layout_constraintEnd_toStartOf="@+id/btn_checkout"
+                app:layout_constraintHorizontal_bias="0.5"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rv_attendances"
